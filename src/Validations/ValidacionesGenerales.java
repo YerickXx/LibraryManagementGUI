@@ -15,21 +15,36 @@ public class ValidacionesGenerales
     {
         for(var v : text) // iterate the ArrayList for check the values 
         {
-            if(v != null && !v.toString().trim().isEmpty() 
-                    && v.toString().matches("^[a-zA-Z]+"))// this is the validation 
+            if(v != null && !v.toString().trim().isEmpty())// this is the validation 
             {                                             //for text input (String) checking if not "blank"
               return true;                                // null and if are just letters
             }
+            return false;
         }   
         return false;
+    }
+    public boolean textoVacio(ArrayList texto)
+    {
+     for(var v : texto) 
+     {
+        if (v.toString().trim().isEmpty()) 
+        {
+            return false;
+        }
+     }
+     return true;
     }
     
     /*Function for validate date and format it*/
     public boolean validacionFechas(String date) 
     {
+        if(date.isEmpty())
+        {
+            return false;
+        }
         try
         {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy"); // format pattern day-month-year
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy"); // format pattern day-month-year
         LocalDate d = LocalDate.parse(date, formatter);
         return true;
         }catch(DateTimeParseException e)

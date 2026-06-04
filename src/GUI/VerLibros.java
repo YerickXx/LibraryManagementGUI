@@ -3,20 +3,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GUI;
-
-/**
- *
- * @author yeric
- */
+import Logic.LibroLogic;
 public class VerLibros extends javax.swing.JFrame {
-    
+    LibroLogic lib;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VerLibros.class.getName());
 
     /**
      * Creates new form VerLibros
      */
-    public VerLibros() {
+    /**
+ * Constructor for VerLibros view.
+ * @param sharedLogic
+ */
+    public VerLibros(LibroLogic sharedLogic) {
         initComponents();
+        this.lib = sharedLogic;
+        jTable1.setModel(lib.creatingJtableModel()); 
     }
 
     /**
@@ -36,12 +38,12 @@ public class VerLibros extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 600));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 600));
         jPanel1.setLayout(null);
 
         jButton1.setText("Mostrar Libros");
+        jButton1.addActionListener(this::jButton1ActionPerformed);
         jPanel1.add(jButton1);
         jButton1.setBounds(590, 530, 180, 27);
 
@@ -56,25 +58,6 @@ public class VerLibros extends javax.swing.JFrame {
         jTable1.setBackground(new java.awt.Color(255, 255, 255));
         jTable1.setFont(new java.awt.Font("Showcard Gothic", 0, 10)); // NOI18N
         jTable1.setForeground(new java.awt.Color(0, 0, 0));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Nombre Libro", "Nombre Autor", "Fecha publicacion", "Biblioteca"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.add(jScrollPane1);
@@ -92,8 +75,12 @@ public class VerLibros extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.dispose();
-        java.awt.EventQueue.invokeLater(() -> new MainMenu().setVisible(true));
+        new MainMenu(this.lib).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+          // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

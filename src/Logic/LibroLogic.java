@@ -14,11 +14,12 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.time.format.DateTimeFormatter;
 import java.util.Iterator;
+import javax.swing.table.DefaultTableModel;
 
 public class LibroLogic 
 {
     // Declaration of the ArrayList and a global variable for date parsing
-    ArrayList <Libro> lib = new ArrayList();
+    public ArrayList <Libro> lib = new ArrayList();
     LocalDate libroDate;
     
     /*
@@ -30,26 +31,39 @@ public class LibroLogic
         String libroName = arr.get(0).toString();
         String autorName = arr.get(1).toString();
         String notFormattedDate = arr.get(2).toString();
+        String libroBiblioteca = arr.get(3).toString(); 
         
         try{ // try...catch for parse the date
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         libroDate = LocalDate.parse(notFormattedDate , formatter);
         }catch(DateTimeParseException e)
         {
             System.out.println("Error de parseo de fecha!");
         }
-        
-        String libroBiblioteca = arr.get(3).toString();
-        Libro L = new Libro(libroName,autorName,libroDate,libroBiblioteca); // creating the object
+        Libro L  = new Libro(libroName,autorName,libroDate,libroBiblioteca); // creating the object
         lib.add(L); // adding to ArrayList 
+        System.out.println(lib.size());
     }
     
-    public void leerLibros()
+    
+    public DefaultTableModel creatingJtableModel()
     {
-        Iterator <Libro> itr = lib.iterator();
-        while(itr.hasNext()){
+        String[] columnas = {"ID", "Titulo", "Autor", "Fecha", "Biblioteca"};
+        DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
+         Iterator <Libro> itr = lib.iterator();
+         while(itr.hasNext()){
           Libro el = itr.next();
-          System.out.println(el.toString());
+          
+          Object[] info = 
+          {
+              el.getId(),
+              el.getNombreLibro(),
+              el.getNombreAutor(),
+              el.getFecha(),
+              el.getNombreBiblioteca()
+          };
+          modelo.addRow(info);
         }
+         return modelo;
     }
 }

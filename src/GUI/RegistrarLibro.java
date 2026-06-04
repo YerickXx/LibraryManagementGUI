@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import Logic.LibroLogic;
 public class RegistrarLibro extends javax.swing.JFrame 
 {
-    
     ValidacionesGenerales valid = new ValidacionesGenerales();
     ArrayList <String> arr = new ArrayList();
-    LibroLogic L = new LibroLogic();
+    LibroLogic lib;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(RegistrarLibro.class.getName());
 
-    public RegistrarLibro() {
+    public RegistrarLibro(LibroLogic sharedLogic) {
         initComponents();
+        this.lib = sharedLogic;
     }
 
     /**
@@ -147,8 +147,8 @@ public class RegistrarLibro extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new MainMenu(this.lib).setVisible(true);
         this.dispose();
-        java.awt.EventQueue.invokeLater(() -> new MainMenu().setVisible(true));
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void Autor_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Autor_textActionPerformed
@@ -165,21 +165,21 @@ public class RegistrarLibro extends javax.swing.JFrame
         arr.add(autor);
         arr.add(date);
         arr.add(library);
-        boolean response = valid.validacionTexto(arr);
+        boolean response = valid.textoVacio(arr);
         boolean dateResponse = valid.validacionFechas(date);
         if(!response)
         {
          this.PopUp_Info.setMessage("No se aceptan campos vacios, por favor intentar de nuevo!");
-        
-        if(!dateResponse)
+        }
+        else if(!dateResponse)
         {
           this.PopUp_Info.setMessage("La fecha debe estar en el formato correcto!");
-        }}
+        }
         else
         {
+          lib.crearObjeto(arr);
+          new MainMenu(this.lib).setVisible(true);
           this.dispose();
-          java.awt.EventQueue.invokeLater(() -> new MainMenu().setVisible(true));
-          L.crearObjeto(arr);
         }
     }//GEN-LAST:event_guardar_buttonActionPerformed
 

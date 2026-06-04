@@ -1,11 +1,12 @@
 package GUI;
 import Logic.LibroLogic;
 public class MainMenu extends javax.swing.JFrame {
-    LibroLogic L = new LibroLogic();
+    LibroLogic L;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainMenu.class.getName());
 
-    public MainMenu() {
+    public MainMenu(LibroLogic sharedLogic) {
         initComponents();
+         this.L= sharedLogic;
     }
 
     /**
@@ -134,12 +135,12 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        java.awt.EventQueue.invokeLater(() -> new VerLibros().setVisible(true));
+        new VerLibros(this.L).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         java.awt.EventQueue.invokeLater(() -> new RegistrarLibro().setVisible(true));
+          new RegistrarLibro(this.L).setVisible(true);
          this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

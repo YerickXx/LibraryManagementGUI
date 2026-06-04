@@ -2,12 +2,13 @@
 package Main;
 
 import GUI.MainMenu;
+import Logic.LibroLogic;
 
 public class YerickAbarca_Proyecto1 {
-
     public static void main(String[] args) {
+        LibroLogic L = new LibroLogic();
         /*display the form (Main menu)*/
-        java.awt.EventQueue.invokeLater(() -> new MainMenu().setVisible(true));
+        new MainMenu(L).setVisible(true);
     }
     
 }
