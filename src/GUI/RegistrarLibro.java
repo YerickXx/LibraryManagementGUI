@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import Logic.LibroLogic;
 public class RegistrarLibro extends javax.swing.JFrame 
 {
-    ValidacionesGenerales valid = new ValidacionesGenerales();
     ArrayList <String> arr = new ArrayList();
     LibroLogic lib;
+        ValidacionesGenerales valid = new ValidacionesGenerales();
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(RegistrarLibro.class.getName());
 
     public RegistrarLibro(LibroLogic sharedLogic) {

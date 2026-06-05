@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
 public class LibroLogic 
 {
     // Declaration of the ArrayList and a global variable for date parsing
-    public ArrayList <Libro> lib = new ArrayList();
+    public static ArrayList <Libro> lib = new ArrayList();
     LocalDate libroDate;
     
     /*
@@ -42,9 +42,7 @@ public class LibroLogic
         }
         Libro L  = new Libro(libroName,autorName,libroDate,libroBiblioteca); // creating the object
         lib.add(L); // adding to ArrayList 
-        System.out.println(lib.size());
     }
-    
     
     public DefaultTableModel creatingJtableModel()
     {

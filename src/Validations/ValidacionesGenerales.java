@@ -5,12 +5,18 @@
 package Validations;
 
 // Important packages for the correct functionally of this class
+import Entities.Libro;
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import Logic.LibroLogic;
+import java.util.Iterator;
+
 public class ValidacionesGenerales 
 {
+        LibroLogic libro;
+    
     public boolean validacionTexto(ArrayList text) 
     {
         for(var v : text) // iterate the ArrayList for check the values 
@@ -51,5 +57,20 @@ public class ValidacionesGenerales
         {
             return false;
         }
+    }
+    
+     public  boolean buscandoBiblioteca (String word)
+    {
+      Iterator <Libro> itr = libro.lib.iterator();
+      while(itr.hasNext())
+      {
+      Libro el = itr.next();
+      if(el.getNombreBiblioteca().contains(word))
+      {
+          return true;
+      }
+      else{return false;}
+      }
+      return false;
     }
 }
