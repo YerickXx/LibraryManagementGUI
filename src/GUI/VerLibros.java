@@ -59,6 +59,12 @@ public class VerLibros extends javax.swing.JFrame {
         jTable1.setFont(new java.awt.Font("Showcard Gothic", 0, 10)); // NOI18N
         jTable1.setForeground(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setHeaderValue("Nombre Libro");
+            jTable1.getColumnModel().getColumn(1).setHeaderValue("Nombre Autor");
+            jTable1.getColumnModel().getColumn(2).setHeaderValue("Fecha publicacion");
+            jTable1.getColumnModel().getColumn(3).setHeaderValue("Biblioteca");
+        }
 
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(20, 60, 750, 460);

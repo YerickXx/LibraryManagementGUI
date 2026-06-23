@@ -7,6 +7,7 @@ package Logic;
 import Entities.Libro;
 import java.util.Iterator;
 import javax.swing.table.DefaultTableModel;
+import java.util.List;
 
 /**
  *
@@ -41,4 +42,44 @@ static public DefaultTableModel Bibliotecas(String word)
     }
     return modelo;
 }
+// Ahora recibe por parámetro la lógica compartida que viene del front
+public static DefaultTableModel obtenerBibliotecasInvertidas(LibroLogic sharedLogic) {
+    String[] columnas = {"ID", "Biblioteca"};
+    DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
+
+    // Validamos usando la instancia que nos pasa el front
+    if (sharedLogic == null || sharedLogic.lib == null || sharedLogic.lib.isEmpty()) {
+        return modelo;
+    }
+
+    // Le pasamos la lista de la instancia al método recursivo
+    llenarTablaRecursivo(0, sharedLogic.lib, modelo);
+    return modelo;
+}
+
+// Recibe la lista explícitamente para trabajar sobre ella
+private static void llenarTablaRecursivo(int indice, List<Libro> lista, DefaultTableModel modelo) {
+    if (indice >= lista.size()) {
+        return;
+    }
+
+    Libro el = lista.get(indice);
+    String nombreInvertido = invertirTexto(el.getNombreBiblioteca());
+
+    Object[] info = {
+        el.getId(),
+        nombreInvertido
+    };
+    modelo.addRow(info);
+    state = true;
+
+    llenarTablaRecursivo(indice + 1, lista, modelo);
+}
+private static String invertirTexto(String texto) {
+    if (texto == null || texto.length() <= 1) {
+        return texto;
+    }
+    return texto.charAt(texto.length() - 1) + invertirTexto(texto.substring(0, texto.length() - 1));
+}
+
 }

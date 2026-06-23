@@ -70,6 +70,7 @@ public class MainMenu extends javax.swing.JFrame {
         jButton4.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         jButton4.setForeground(new java.awt.Color(0, 0, 0));
         jButton4.setText("Bibliotecas Invertidas");
+        jButton4.addActionListener(this::jButton4ActionPerformed);
         jPanel2.add(jButton4);
         jButton4.setBounds(290, 310, 180, 27);
 
@@ -145,6 +146,14 @@ public class MainMenu extends javax.swing.JFrame {
           new RegistrarLibro(this.L).setVisible(true);
          this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        this.dispose();
+        BibliotecasInvertidas ventanaInvertidas = new BibliotecasInvertidas(this.L);
+        ventanaInvertidas.setSize(800, 600);
+        ventanaInvertidas.setLocationRelativeTo(null);
+        ventanaInvertidas.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
