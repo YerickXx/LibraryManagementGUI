@@ -1,15 +1,28 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
 package GUI;
 import Validations.ValidacionesGenerales;
-import java.util.ArrayList;
 import Logic.LibroLogic;
-public class RegistrarLibro extends javax.swing.JFrame 
-{
-    ArrayList <String> arr = new ArrayList();
-    LibroLogic lib;
-        ValidacionesGenerales valid = new ValidacionesGenerales();
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(RegistrarLibro.class.getName());
+import java.util.ArrayList;
 
-    public RegistrarLibro(LibroLogic sharedLogic) {
+/**
+ *
+ * @author yeric
+ */
+public class EdicionLibros extends javax.swing.JFrame {
+        ArrayList <String> arr = new ArrayList();
+        LibroLogic lib;
+        ValidacionesGenerales valid = new ValidacionesGenerales();
+    
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(EdicionLibros.class.getName());
+
+    /**
+     * Creates new form EdicionLibros
+     *  @param sharedLogic
+     */
+    public EdicionLibros(LibroLogic sharedLogic) {
         initComponents();
         this.lib = sharedLogic;
     }
@@ -24,140 +37,128 @@ public class RegistrarLibro extends javax.swing.JFrame
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        Spinner_ID = new javax.swing.JSpinner();
         jLabel2 = new javax.swing.JLabel();
-        Titulo_text = new javax.swing.JTextField();
+        Titulo_Text = new javax.swing.JTextField();
         Autor_text = new javax.swing.JTextField();
         Fecha_text = new javax.swing.JTextField();
         Biblioteca_text = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
-        guardar_button = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         PopUp_Info = new javax.swing.JOptionPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(800, 600));
-        setMinimumSize(new java.awt.Dimension(800, 600));
-        setResizable(false);
 
         jPanel1.setLayout(null);
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Regresar");
-        jButton1.addActionListener(this::jButton1ActionPerformed);
-        jPanel1.add(jButton1);
-        jButton1.setBounds(30, 520, 100, 27);
+        Spinner_ID.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        Spinner_ID.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel1.add(Spinner_ID);
+        Spinner_ID.setBounds(340, 130, 140, 40);
 
-        jLabel2.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Titulo:");
+        jLabel2.setText("seleccione el ID del libro que desea modificar");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(40, 140, 50, 16);
+        jLabel2.setBounds(210, 100, 360, 30);
 
-        Titulo_text.setBackground(new java.awt.Color(255, 255, 255));
-        Titulo_text.setFont(new java.awt.Font("Showcard Gothic", 0, 10)); // NOI18N
-        Titulo_text.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(Titulo_text);
-        Titulo_text.setBounds(90, 130, 230, 40);
+        Titulo_Text.setBackground(new java.awt.Color(255, 255, 255));
+        Titulo_Text.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        Titulo_Text.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(Titulo_Text);
+        Titulo_Text.setBounds(280, 230, 260, 40);
 
         Autor_text.setBackground(new java.awt.Color(255, 255, 255));
-        Autor_text.setFont(new java.awt.Font("Showcard Gothic", 0, 10)); // NOI18N
+        Autor_text.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         Autor_text.setForeground(new java.awt.Color(0, 0, 0));
         Autor_text.addActionListener(this::Autor_textActionPerformed);
         jPanel1.add(Autor_text);
-        Autor_text.setBounds(90, 190, 230, 40);
+        Autor_text.setBounds(280, 310, 260, 40);
 
         Fecha_text.setBackground(new java.awt.Color(255, 255, 255));
-        Fecha_text.setFont(new java.awt.Font("Showcard Gothic", 0, 10)); // NOI18N
+        Fecha_text.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         Fecha_text.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(Fecha_text);
-        Fecha_text.setBounds(90, 250, 230, 40);
+        Fecha_text.setBounds(280, 400, 260, 40);
 
         Biblioteca_text.setBackground(new java.awt.Color(255, 255, 255));
         Biblioteca_text.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         Biblioteca_text.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(Biblioteca_text);
-        Biblioteca_text.setBounds(90, 310, 230, 40);
+        Biblioteca_text.setBounds(280, 490, 260, 40);
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
-        jTextArea1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Recomendacion:\n- La fecha en formato DD/MM/AAAA\n\nPara que de esta manera no tengas\nque volver a escribirla!\nSuerte en tu registro y gracias!");
-        jTextArea1.setAutoscrolls(false);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(450, 170, 270, 110);
-
-        jLabel3.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Menu Registro De Libro");
+        jLabel3.setText("Titulo");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(270, 70, 240, 23);
-
-        guardar_button.setBackground(new java.awt.Color(255, 255, 255));
-        guardar_button.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
-        guardar_button.setForeground(new java.awt.Color(0, 0, 0));
-        guardar_button.setText("Guardar");
-        guardar_button.addActionListener(this::guardar_buttonActionPerformed);
-        jPanel1.add(guardar_button);
-        guardar_button.setBounds(320, 390, 190, 27);
+        jLabel3.setBounds(380, 210, 60, 20);
 
         jLabel4.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Autor:");
+        jLabel4.setText("Autor");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(40, 200, 50, 16);
+        jLabel4.setBounds(380, 290, 50, 16);
 
         jLabel5.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Fecha:");
+        jLabel5.setText("Fecha");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(40, 260, 60, 16);
+        jLabel5.setBounds(380, 380, 50, 16);
 
         jLabel6.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Biblioteca:");
+        jLabel6.setText("Biblioteca");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(20, 320, 80, 16);
+        jLabel6.setBounds(360, 470, 70, 16);
+
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setText("Guardar");
+        jButton1.addActionListener(this::jButton1ActionPerformed);
+        jPanel1.add(jButton1);
+        jButton1.setBounds(620, 490, 130, 40);
+
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 0, 0));
+        jButton2.setText("Volver");
+        jButton2.addActionListener(this::jButton2ActionPerformed);
+        jPanel1.add(jButton2);
+        jButton2.setBounds(40, 530, 80, 27);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Libreria.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
-        jLabel1.setMaximumSize(new java.awt.Dimension(800, 600));
-        jLabel1.setMinimumSize(new java.awt.Dimension(800, 600));
-        jLabel1.setPreferredSize(new java.awt.Dimension(800, 600));
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(0, 0, 800, 600);
+        jLabel1.setBounds(-100, 0, 1121, 600);
         jPanel1.add(PopUp_Info);
-        PopUp_Info.setBounds(290, 430, 262, 90);
+        PopUp_Info.setBounds(200, 30, 400, 170);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new MainMenu(this.lib).setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void Autor_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Autor_textActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Autor_textActionPerformed
 
-    private void guardar_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardar_buttonActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new MainMenu(this.lib).setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
         arr.clear();
-        String tittle = this.Titulo_text.getText().toLowerCase();
+       int id =  (int) this.Spinner_ID.getValue();
+        String tittle = this.Titulo_Text.getText().toLowerCase();
         String autor = this.Autor_text.getText().toLowerCase();
         String date = this.Fecha_text.getText().toLowerCase();
         String library = this.Biblioteca_text.getText().toLowerCase();
@@ -165,8 +166,10 @@ public class RegistrarLibro extends javax.swing.JFrame
         arr.add(autor);
         arr.add(date);
         arr.add(library);
+        
         boolean response = valid.textoVacio(arr);
         boolean dateResponse = valid.validacionFechas(date);
+        
         if(!response)
         {
          this.PopUp_Info.setMessage("No se aceptan campos vacios, por favor intentar de nuevo!");
@@ -177,20 +180,22 @@ public class RegistrarLibro extends javax.swing.JFrame
         }
         else
         {
-          lib.crearObjeto(arr);
+          lib.editarObjetoPorId(arr, id);
           new MainMenu(this.lib).setVisible(true);
           this.dispose();
         }
-    }//GEN-LAST:event_guardar_buttonActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Autor_text;
     private javax.swing.JTextField Biblioteca_text;
     private javax.swing.JTextField Fecha_text;
     private javax.swing.JOptionPane PopUp_Info;
-    private javax.swing.JTextField Titulo_text;
-    private javax.swing.JButton guardar_button;
+    private javax.swing.JSpinner Spinner_ID;
+    private javax.swing.JTextField Titulo_Text;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -198,7 +203,5 @@ public class RegistrarLibro extends javax.swing.JFrame
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

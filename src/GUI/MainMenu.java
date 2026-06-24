@@ -135,6 +135,11 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+        this.dispose();
+        EdicionLibros edicion = new EdicionLibros(this.L);
+        edicion.setSize(800, 600);
+        edicion.setLocationRelativeTo(null);
+        edicion.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

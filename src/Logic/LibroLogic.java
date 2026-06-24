@@ -64,4 +64,39 @@ public class LibroLogic
         }
          return modelo;
     }
+    
+  public boolean editarObjetoPorId(ArrayList arr, int idBuscar) 
+{
+    //Buscar el libro existente por su ID
+    Libro libroExistente = null;
+    
+    for (int i = 0; i < lib.size(); i++) {
+        Libro actual = (Libro) lib.get(i);
+        if (actual.getId() == idBuscar) { 
+            libroExistente = actual; // Guardamos la referencia del objeto real
+            break;
+        }
+    }
+    
+    // 2. Si no se encuentra, salimos
+    if (libroExistente == null) {
+        return false;
+    }
+    
+    //Parsear la fecha
+    LocalDate libroDate = null;
+    try {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        libroDate = LocalDate.parse(arr.get(2).toString(), formatter);
+    } catch(DateTimeParseException e) {
+        return false;
+    }
+    
+    // setters sobre 'libroExistente'. esto para no crear uno nuevo sino modificar uno ya registrado
+    libroExistente.setNombreLibro(arr.get(0).toString());
+    libroExistente.setNombreAutor(arr.get(1).toString());
+    libroExistente.setFecha(libroDate);
+    libroExistente.setNombreBiblioteca(arr.get(3).toString());
+    return true;
+}
 }
