@@ -8,6 +8,7 @@ import Entities.Libro;
 import java.util.Iterator;
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
+import java.time.LocalDate;
 
 /**
  *
@@ -57,7 +58,7 @@ public static DefaultTableModel obtenerBibliotecasInvertidas(LibroLogic sharedLo
     return modelo;
 }
 
-// Recibe la lista explícitamente para trabajar sobre ella
+// Recibe la lista para trabajar sobre ella
 private static void llenarTablaRecursivo(int indice, List<Libro> lista, DefaultTableModel modelo) {
     if (indice >= lista.size()) {
         return;
@@ -81,5 +82,84 @@ private static String invertirTexto(String texto) {
     }
     return texto.charAt(texto.length() - 1) + invertirTexto(texto.substring(0, texto.length() - 1));
 }
+
+private static String[] InsertionSortBibliotecas(List<Libro> L,DefaultTableModel modelo)
+{
+    int n = L.size();
+    String[] bibliotecas = new String[n];
+    for(int j = 0; j < L.size();j++)
+    {
+        bibliotecas[j] = L.get(j).getNombreBiblioteca();
+    }
+        for(int i = 1; i < n;i++)
+        {
+            String f = bibliotecas[i];
+            int b = i-1;
+            
+            while(b >= 0 && bibliotecas[b].compareTo(f)>0)
+            {
+                bibliotecas[b+1] = bibliotecas[b];
+                b--;
+            }
+            bibliotecas[b+1] = f;
+        }
+        for (int k = 0; k < n; k++) {
+        modelo.addRow(new Object[]{ bibliotecas[k] });
+    }
+        return bibliotecas;
+}
+public static DefaultTableModel obtenerBibliotecasOrdenadas(LibroLogic sharedLogic) {
+    String[] columnas = {"Biblioteca"};
+    DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
+
+    // Validamos usando la instancia que nos pasa el front
+    if (sharedLogic == null || sharedLogic.lib == null || sharedLogic.lib.isEmpty()) {
+        return modelo;
+    }
+
+    // Le pasamos la lista de la instancia al método recursivo
+    InsertionSortBibliotecas(sharedLogic.lib, modelo);
+    return modelo;
+}
+
+private static LocalDate[] InsertionSortFechas(List<Libro> L,DefaultTableModel modelo)
+{
+    int n = L.size();
+    LocalDate[] fechas = new LocalDate[n];
+    for(int j = 0; j < L.size();j++)
+    {
+        fechas[j] = L.get(j).getFecha();
+    }
+        for(int i = 1; i < n;i++)
+        {
+            LocalDate f = fechas[i];
+            int b = i-1;
+            
+            while(b >= 0 && fechas[b].compareTo(f)>0)
+            {
+                fechas[b+1] = fechas[b];
+                b--;
+            }
+            fechas[b+1] = f;
+        }
+        for (int k = 0; k < n; k++) {
+        modelo.addRow(new Object[]{ fechas[k] });
+    }
+        return fechas;
+}
+public static DefaultTableModel obtenerFechasOrdenadas(LibroLogic sharedLogic) {
+    String[] columnas = {"Fechas de registro"};
+    DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
+
+    // Validamos usando la instancia que nos pasa el front
+    if (sharedLogic == null || sharedLogic.lib == null || sharedLogic.lib.isEmpty()) {
+        return modelo;
+    }
+
+    // Le pasamos la lista de la instancia al método recursivo
+    InsertionSortFechas(sharedLogic.lib, modelo);
+    return modelo;
+}
+
 
 }

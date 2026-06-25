@@ -58,6 +58,7 @@ public class EdicionLibros extends javax.swing.JFrame {
 
         Spinner_ID.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         Spinner_ID.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        Spinner_ID.setEditor(new javax.swing.JSpinner.NumberEditor(Spinner_ID, ""));
         jPanel1.add(Spinner_ID);
         Spinner_ID.setBounds(340, 130, 140, 40);
 
@@ -71,50 +72,50 @@ public class EdicionLibros extends javax.swing.JFrame {
         Titulo_Text.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         Titulo_Text.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(Titulo_Text);
-        Titulo_Text.setBounds(280, 230, 260, 40);
+        Titulo_Text.setBounds(90, 210, 260, 40);
 
         Autor_text.setBackground(new java.awt.Color(255, 255, 255));
         Autor_text.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         Autor_text.setForeground(new java.awt.Color(0, 0, 0));
         Autor_text.addActionListener(this::Autor_textActionPerformed);
         jPanel1.add(Autor_text);
-        Autor_text.setBounds(280, 310, 260, 40);
+        Autor_text.setBounds(460, 210, 270, 40);
 
         Fecha_text.setBackground(new java.awt.Color(255, 255, 255));
         Fecha_text.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         Fecha_text.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(Fecha_text);
-        Fecha_text.setBounds(280, 400, 260, 40);
+        Fecha_text.setBounds(90, 320, 260, 40);
 
         Biblioteca_text.setBackground(new java.awt.Color(255, 255, 255));
         Biblioteca_text.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         Biblioteca_text.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(Biblioteca_text);
-        Biblioteca_text.setBounds(280, 490, 260, 40);
+        Biblioteca_text.setBounds(460, 320, 270, 40);
 
         jLabel3.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Titulo");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(380, 210, 60, 20);
+        jLabel3.setBounds(40, 220, 60, 20);
 
         jLabel4.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Autor");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(380, 290, 50, 16);
+        jLabel4.setBounds(410, 220, 50, 16);
 
         jLabel5.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Fecha");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(380, 380, 50, 16);
+        jLabel5.setBounds(40, 330, 50, 16);
 
         jLabel6.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Biblioteca");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(360, 470, 70, 16);
+        jLabel6.setBounds(390, 330, 70, 16);
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
@@ -122,7 +123,7 @@ public class EdicionLibros extends javax.swing.JFrame {
         jButton1.setText("Guardar");
         jButton1.addActionListener(this::jButton1ActionPerformed);
         jPanel1.add(jButton1);
-        jButton1.setBounds(620, 490, 130, 40);
+        jButton1.setBounds(340, 380, 130, 40);
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
@@ -135,9 +136,9 @@ public class EdicionLibros extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Libreria.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(-100, 0, 1121, 600);
+        jLabel1.setBounds(-20, 0, 1121, 600);
         jPanel1.add(PopUp_Info);
-        PopUp_Info.setBounds(200, 30, 400, 170);
+        PopUp_Info.setBounds(240, 420, 300, 170);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -172,11 +173,13 @@ public class EdicionLibros extends javax.swing.JFrame {
         
         if(!response)
         {
-         this.PopUp_Info.setMessage("No se aceptan campos vacios, por favor intentar de nuevo!");
+         this.PopUp_Info.showMessageDialog(this,"No se aceptan campos vacios, por favor intentar de nuevo!");
+         return;
         }
         else if(!dateResponse)
         {
-          this.PopUp_Info.setMessage("La fecha debe estar en el formato correcto!");
+          this.PopUp_Info.showMessageDialog(this,"La fecha debe estar en el formato correcto!");
+          return;
         }
         else
         {

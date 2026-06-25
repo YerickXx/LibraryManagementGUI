@@ -63,6 +63,7 @@ public class MainMenu extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Showcard Gothic", 0, 12)); // NOI18N
         jButton3.setForeground(new java.awt.Color(0, 0, 0));
         jButton3.setText("Ordenamientos");
+        jButton3.addActionListener(this::jButton3ActionPerformed);
         jPanel2.add(jButton3);
         jButton3.setBounds(303, 340, 160, 27);
 
@@ -159,6 +160,14 @@ public class MainMenu extends javax.swing.JFrame {
         ventanaInvertidas.setLocationRelativeTo(null);
         ventanaInvertidas.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        this.dispose();
+        SubMenuAlgoritmos ventanaInvertidas = new SubMenuAlgoritmos(this.L);
+                ventanaInvertidas.setSize(800, 600);
+        ventanaInvertidas.setLocationRelativeTo(null);
+        ventanaInvertidas.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
